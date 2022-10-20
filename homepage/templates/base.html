@@ -1,0 +1,327 @@
+{% load static %}
+<!-- Log on to codeastro.com for more projects -->
+
+<html lang="en">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!-- Main CSS, then Sidebar CSS and Dialog Box CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="icon"  sizes="32x32 32x32" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fweb.umang.gov.in%2Flanding%2Fdepartment%2Findia-meteorological-department.html&psig=AOvVaw0bChVGaRGXnsyzbPGCZpuD&ust=1665740438278000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCKDCv-v03PoCFQAAAAAdAAAAABAO">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dialogbox.css' %}">
+    <title>IMD -Instruments House - {% block title %}Title Missing{% endblock title %}</title>
+
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #01345B;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidebar.show{
+left:0px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 22px;
+<!--  color: #818181;-->
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #28559A;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  color:#0F2557;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+.crossbtn:hover{
+
+}
+
+.burgermenu{
+border:1px;
+background-color:#4B9FE1;
+margin-top: 5px;
+font-size: 20px;
+position:fixed;
+border-radius:25px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+</style>
+
+
+
+</head>
+<!-- Log on to codeastro.com for more projects -->
+<body onload="openNav()">
+
+    <!-- Dialog Box CSS  -->
+    <div id="dialogoverlay"></div>
+    <div id="dialogbox">
+        <div class="align-middle">
+            <div id="dialogboxhead"></div>
+            <div id="dialogboxbody"></div>
+            <div id="dialogboxfoot"></div>
+        </div>
+    </div>
+
+    <main id="wrapper">
+        <div id="mySidebar" class="sidebar sidebar-show">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <ul class="list-unstyled sidebar-components">
+
+                <img src="https://internal.imd.gov.in/section/satmet/lightning/logof.png"
+          style="height: 200px; margin-top: -20px; margin-left: 45px; margin-bottom: -20px;" >
+
+            <ul class="list-unstyled sidebar-components">
+                {# <p class="sidebar-paragraph">Dummy Heading</p> #}
+                <li>
+                    <a class="sidebar-text sidebar-button " href="{% url 'home' %}"  style="font-family: 'Alkalami'"><i class="fas fa-home"></i> Home</a>
+                </li>
+
+                <li>
+                    <a class="sidebar-text sidebar-button" href="{% url 'new-stock' %}" style="font-family: 'Alkalami'"><i class="fas fa-boxes"></i> Inwards</a>
+                </li>
+                 <li>
+                    <a class="sidebar-text sidebar-button" href="{% url 'select-supplier' %}" style="font-family: 'Alkalami'"><i class="fas fa-boxes"></i> Purchase</a>
+                </li>
+
+                <li>
+                    <a class="sidebar-text sidebar-button" href="{% url 'new-sale' %}" style="font-family: 'Alkalami'"><i class="fas fa-boxes"></i> Outwards</a>
+                </li>
+
+                <li>
+                    <a class="sidebar-text sidebar-button" href="{% url 'new-supplier' %}" style="font-family: 'Alkalami'"><i class="fas fa-boxes"></i> Supplier</a>
+                </li>
+                <li>
+                    <a href="#saleSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-file"></i> Stock Report</a>
+                    <ul class="collapse list-unstyled" id="saleSubmenu">
+                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:30px; background-color:#01345B" href="{% url 'inwardslip' %}"><i class="fas fa-dot-circle"></i> Inward Slip</a> </li>
+                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:px; background-color:#01345B" href="{% url 'outwardslip' %}"><i class="fas fa-dot-circle"></i> Outward Slips</a> </li>
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:30px; background-color:#8DB48E" href="{% url 'purchases-list' %}"><i class="fas fa-dot-circle"></i> Inward Slip</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:px; background-color:#8DB48E" href="{% url 'sales-list' %}"><i class="fas fa-dot-circle"></i> Outward Slips</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'inventory' %}"><i class="fas fa-dot-circle"></i> Stock Summary</a> </li>-->
+
+                    </ul>
+                </li>
+
+                <li>
+                    <a class="sidebar-text sidebar-button" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> Help Section</a>
+                </li>
+
+                <li class="bottomleft">
+                    <a href="#UserSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-user-circle"></i> {{ request.user.username }}</a>
+                    <ul class="collapse list-unstyled" id="UserSubmenu">
+                        {% if request.user.is_superuser %}
+                        {% endif %}
+                            <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'logout' %}"><i class="fas fa-dot-circle"></i> Logout</a> </li>
+                    </ul>
+                </li>
+
+            </ul>
+
+
+ </ul>
+    </div>
+
+<div id="main">
+
+  <button class="openbtn burgermenu" onclick="openNav()">☰</button>
+
+<!--  <button class="openbtn burgermenu" onclick="openNav()">☰</button>-->
+</div>
+
+
+
+
+
+
+    
+    {% if user.is_authenticated %}
+    
+<!--        <nav id="sidebar">-->
+<!--            -->
+<!--            <div class="sidebar-header">-->
+<!--                <a class="navbar-brand titlefont mr-4" href="{% url 'home' %}"><h3>Store Office </h3></a>-->
+<!--            </div>-->
+
+<!--            <ul class="list-unstyled sidebar-components">-->
+<!--                {# <p class="sidebar-paragraph">Dummy Heading</p> #}-->
+<!--                <li> -->
+<!--                    <a class="sidebar-text sidebar-button" href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>-->
+<!--                </li>-->
+
+<!--                <li>-->
+<!--                    <a href="#inventorySubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-boxes"></i> Inventory</a>-->
+<!--                    <ul class="collapse list-unstyled" id="inventorySubmenu">-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'new-stock' %}"><i class="fas fa-dot-circle"></i> Add New</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'inventory' %}"><i class="fas fa-dot-circle"></i> Inventory List</a> </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--&lt;!&ndash;                <li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <a href="#purchaseSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-cash-register"></i> Purchases</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <ul class="collapse list-unstyled" id="purchaseSubmenu">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'select-supplier' %}"><i class="fas fa-dot-circle"></i> New Incoming Stock</a> </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'purchases-list' %}"><i class="fas fa-dot-circle"></i> Purchases List</a> </li>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;                </li>&ndash;&gt;-->
+<!--                <li>-->
+<!--                    <a href="#saleSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-dollar-sign"></i> Sales</a>-->
+<!--                    <ul class="collapse list-unstyled" id="saleSubmenu">-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'new-sale' %}"><i class="fas fa-dot-circle"></i> New Outgoing Stock</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'sales-list' %}"><i class="fas fa-dot-circle"></i> Sales Orders</a> </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#supplierSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-dolly-flatbed"></i> Suppliers</a>-->
+<!--                    <ul class="collapse list-unstyled" id="supplierSubmenu">-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'select-supplier' %}"><i class="fas fa-dot-circle"></i> New Incoming Stock</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'purchases-list' %}"><i class="fas fa-dot-circle"></i> Purchases List</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'new-supplier' %}"><i class="fas fa-dot-circle"></i> Add New Supplier</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'suppliers-list' %}"><i class="fas fa-dot-circle"></i> Suppliers List</a> </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+
+
+
+<!--                <li>-->
+<!--                    <a href="#stockSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-dolly-flatbed"></i> Stock Report</a>-->
+<!--                    <ul class="collapse list-unstyled" id="stockSubmenu">-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'inwardslip' %}"><i class="fas fa-dot-circle"></i> Inward Slip </a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'outwardslip' %}"><i class="fas fa-dot-circle"></i> outward Slip</a> </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="sidebar-text sidebar-button" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> About</a>-->
+<!--                </li>&lt;!&ndash; Log on to codeastro.com for more projects &ndash;&gt;-->
+
+<!--                <li class="bottomleft">-->
+<!--                    <a href="#UserSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-user-circle"></i> {{ request.user.username }}</a>-->
+<!--                    <ul class="collapse list-unstyled" id="UserSubmenu">-->
+<!--                        {% if request.user.is_superuser %}-->
+<!--                        {% endif %}-->
+<!--                            <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'logout' %}"><i class="fas fa-dot-circle"></i> Logout</a> </li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+
+<!--            </ul>-->
+<!--            {% comment %}-->
+<!--            <ul class="list-unstyled CTAs">-->
+<!--                <li>-->
+<!--                    <a href="#" class="sidebar-button nav-button">Button</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="#" class="sidebar-text">Link</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            {% endcomment %}-->
+
+<!--        </nav>-->
+<!--    -->
+        <div id="content">
+
+            <div class="row">
+                <div class="col-md-12">
+                
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+                        {% endfor %}
+                    {% endif %}
+                
+    {% endif %} 
+
+                    <div class="container-fluid">
+                        {% block content %}{% endblock content %}
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+
+        </div>
+    
+    </main>    
+        <!-- Log on to codeastro.com for more projects -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'bootstrap/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'bootstrap/bootstrap.min.js' %}"></script>
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+}
+
+<!--$(.'openbtn').click(function(){-->
+<!--$(this).openbtn("click");-->
+<!--$(mySidebar).openbtn("show");-->
+<!--});-->
+
+</script>
+
+</body>
+
+</html>
