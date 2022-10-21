@@ -40,8 +40,8 @@ from .forms import (
     SupplierForm,
     SaleForm,
     SaleItemFormset,
-    SaleDetailsForm, SaleItemForm,
-    # ReportDateForm,
+    SaleDetailsForm,
+
 
 )
 

@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from imd.imdapp.models import *
 
-# from .. imdapp.models import Stock, SaleBill, PurchaseBill
-# from models import Stock,SaleBill,PurchaseBill
 
 
 class HomeView(View):
