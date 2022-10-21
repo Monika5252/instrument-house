@@ -13,6 +13,7 @@ urlpatterns = [
     path('stock/<name>', views.StockView.as_view(), name='stockdetails'),
     path('stock/<name>', views.StockView.as_view(), name='stockdetails'),
 
+
     path('suppliers/', views.SupplierListView.as_view(), name='suppliers-list'),
     path('suppliers/new', views.SupplierCreateView.as_view(), name='new-supplier'),
     path('suppliers/<pk>/edit', views.SupplierUpdateView.as_view(), name='edit-supplier'),
@@ -37,7 +38,12 @@ urlpatterns = [
 
     path("purchases/<billno>", views.PurchaseBillView.as_view(), name="purchase-bill"),
     path("sales/<billno>", views.SaleBillView.as_view(), name="sale-bill"),
+
+    # path('Master/', views.CategoryListView.as_view(), name='category-list'),
+    # path('Master/new',views.CategoryCreateView.as_view(), name='addcategory'),
+
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+

@@ -1,3 +1,9 @@
+
+
+	
+Missing message notifications?
+Chat needs permission to send notifications. To turn on notifications, click Continue and then Allow when prompted by your browser. You can change how many notifications you get in conversation settings and Chat settings.
+
 {% extends "base.html" %}
 {% load static %}
 
@@ -22,12 +28,11 @@
             
             {{ form.category.errors }}
             {{ form.subcategory.errors }}
-            {{ form.product.errors }}
-            {{ form.type.errors }}
+            {{ form.description.errors }}
+
             <div class="form-row">
             <div class="form-group col-md-6">
                 <label  class="panel-body-text">Category</label>
-
                 {{ form.category }}
             </div>
             </div>
@@ -37,24 +42,16 @@
                     <label class="panel-body-text">Sub-Category</label>
                     {{ form.subcategory}}
                 </div>
+            </div>
 
 
                 <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label  class="panel-body-text">Product</label>
-                    {{ form.product}}
+                    <label  class="panel-body-text">Description</label>
+                    {{ form.description}}
                 </div>
 
             </div>
-
-
-            </div>
-             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label  class="panel-body-text">Type</label>
-                    {{ form.type}}
-                </div><!-- Log on to codeastro.com for more projects -->
-
 
 
 
@@ -73,28 +70,28 @@
                     <div class="panel-body">
                     {% for iform in formset %}
                         <div class="row form-row">
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-4">
                                 {{ iform.stock.errors }}
                                 <label class="panel-body-text">Category:</label>
                                 {{ iform.category }}
                             </div>
-                            <div class="form-group col-md-2">
+                            <div class="form-group col-md-4">
                                 <label class="panel-body-text">Sub-Category:</label>
                                 {{ iform.subcategory }}
                             </div>
-
-                             <div class="form-group col-md-2">
-                                <label class="panel-body-text">Product:</label>
-                                {{ iform.product }}
+                        </div>
+                             <div class="form-group col-md-4">
+                                <label class="panel-body-text">description:</label>
+                                {{ iform.description }}
                             </div>
-                            <div class="from-group col-md-2">
-                                <label class="panel=-body-text">Type</label>
-                                <select class="custom-select">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">Consumable</option>
-                                    <option value="2">Non-Consumable</option>
-                                </select>
-                            </div>
+<!--                            <div class="from-group col-md-2">-->
+<!--                                <label class="panel=-body-text">Type</label>-->
+<!--                                <select class="custom-select">-->
+<!--                                    <option selected>Open this select menu</option>-->
+<!--                                    <option value="1">Consumable</option>-->
+<!--                                    <option value="2">Non-Consumable</option>-->
+<!--                                </select>-->
+<!--                            </div>-->
 
                     {% endfor %}
                         <div style="text-align: right;">                    
@@ -104,12 +101,14 @@
                 </div>
 
             <br>
-            <div class="align-middle">
-                <button type="submit" class="btn btn-success">Add</button>
-                <a href="{% url 'category-list' %}" class="btn btn-secondary">Cancel</a>
-            </div>
-        </div>
-     </form><!-- Log on to codeastro.com for more projects -->
+                    <div class="align-middle">
+                        <button type="submit" class="btn btn-info">{{ savebtn }}</button>
+<!--                        <a href="{% url 'category-list' %}" class="btn btn-secondary">Add</a>-->
+
+                    </div>
+                </div>
+
+    </form><!-- Log on to codeastro.com for more projects -->
 
     <!-- Custom JS to add and remove item forms -->
     <script type="text/javascript" src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
@@ -236,3 +235,5 @@
     </script>
 
 {% endblock content %}
+categorypage.txt
+Displaying categorypage.txt.

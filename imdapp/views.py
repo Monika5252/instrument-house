@@ -10,7 +10,6 @@ import csv
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django_filters.views import FilterView
-from .filters import StockFilter
 import datetime
 from django.views.generic import (
     View,
@@ -22,6 +21,8 @@ from django.views.generic import (
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from .filters import StockFilter
 from .models import (
     PurchaseBill,
     Supplier,
@@ -29,7 +30,7 @@ from .models import (
     PurchaseBillDetails,
     SaleBill,
     SaleItem,
-    SaleBillDetails, Stock,
+    SaleBillDetails, Stock, Category,
 )
 from .forms import (
     StockForm,
@@ -522,6 +523,43 @@ class StockView(View):
             'stock': stockobj,
         }
         return render(request, 'inventory/stockdetails.html', context)
+
+
+# class CategoryListView(FilterView):
+#     template_name = 'Master/category-list.html'
+#     queryset = Category.objects.all()
+#     paginate_by = 10
+#
+#
+# class CategoryCreateView(SuccessMessageMixin, CreateView):
+#     model = Category
+#     form_class = CategoryForm
+#     template_name = "Master/addcategory.html"
+#     success_url = '/category-list'
+#     success_message = "Category has been created successfully"
+#
+#     def get_context_data(self, **kwargs):  # used to send additional context
+#         context = super().get_context_data(**kwargs)
+#         context["title"] = 'New Category'
+#         context["savebtn"] = 'Add Category'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
