@@ -28,9 +28,10 @@ SETTING_PATH=os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'django-insecure-9(qoxn594k57a^ie(rt225liumt$(7_r2^ej2fbj*q#zgybt0s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['imdapp.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ["imdapp.herokuapp.com","localhost"]
+# ,'127.0.0.1']
 
 
 # Application definition
@@ -68,8 +69,8 @@ ROOT_URLCONF = 'imd.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': ["templates"],
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ["templates"],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -90,18 +91,18 @@ WSGI_APPLICATION = 'imd.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'imddatabase123',
-        'USER': 'imd123',
-        'PASSWORD': 'Tiger@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'imddatabase123',
+    #     'USER': 'imd123',
+    #     'PASSWORD': 'Tiger@123',
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -147,8 +148,8 @@ STATISTICS_DIRS=(
       os.path.join(BASE_DIR,'static')
  )
 STATIC_ROOT=BASE_DIR, 'static'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'                     # bootstrap template crispy-form uses
 
