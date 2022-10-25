@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-9(qoxn594k57a^ie(rt225liumt$(7_r2^ej2fbj*q#zgybt0s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['imdapp.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','imdapp.herokuapp.com']
 
 
 # Application definition
@@ -67,8 +67,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': ["templates"],
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'DIRS': [os.path.join(SETTING_PATH, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,6 +131,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 
