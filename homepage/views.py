@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-from ..imdapp.models import *
-
+from imd.imdapp.models import *
 
 
 class HomeView(View):

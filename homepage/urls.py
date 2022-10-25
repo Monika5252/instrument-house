@@ -1,7 +1,8 @@
+
 from django.urls import path
-from . import views
+from imd.homepage import views
 
 urlpatterns = [
-    path('', views.HomeView.as_view(), name='home'),
+    path('Homepage/', views.HomeView.as_view(), name='home'),
     path('about/', views.AboutView.as_view(), name='about'),
-]
+    ]
