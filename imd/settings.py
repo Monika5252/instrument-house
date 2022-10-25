@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-9(qoxn594k57a^ie(rt225liumt$(7_r2^ej2fbj*q#zgybt0s
 DEBUG = False
 
 ALLOWED_HOSTS = ["imdapp.herokuapp.com","localhost"]
-SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 
 # ,'127.0.0.1']
 
