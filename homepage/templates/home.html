@@ -42,25 +42,8 @@
 
     <div class="content-section">
         <div class="row">
-            <div class="col-md-6">
-                <div style="font-family:'Alkalami';color: #28559A; font-style: bold; text-align:center; font-size: 30px; border-bottom: 2px solid #4e6570">Recent Inwards</div><br>
-                {% for item in sales %}
-                    {% if not forloop.first %}
-                        <br><div style="border-bottom: 0.5px solid #4e6570 "></div><br>
-                    {% endif %}
-                    <div class="row">
-                        <div class="col-md-9">
-                            Bill No: #{{ item.billno }} <br>
-                            Purchased by <b>{{ item.name }}</b> <br>
-                            <small><i>{{ item.time.date }}</i></small>
-                        </div>
-                        <div class="col-md-2"> <br> ₹{{ item.get_total_price }} <br> <a href="{% url 'sale-bill' item.billno %}">View Bill</a> </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-            <div class="col-md-6">
-                <div style="font-family: 'Alkalami';color: #28559A; font-style: bold;text-align:center; font-size: 30px; border-bottom: 2px solid #4e6570">Recent Outwards</div><br>
+             <div class="col-md-6">
+                <div style="font-family: 'Alkalami';color: #28559A; font-style: bold;text-align:center; font-size: 30px; border-bottom: 2px solid #4e6570">Recent Inward</div><br>
                 {% for item in purchases %}
                     {% if not forloop.first %}
                         <br><div style="border-bottom: 0.5px solid #4e6570"></div><br>
@@ -75,7 +58,26 @@
                     </div>
                 {% endfor %}
             </div>
+
+            <div class="col-md-6">
+                <div style="font-family:'Alkalami';color: #28559A; font-style: bold; text-align:center; font-size: 30px; border-bottom: 2px solid #4e6570">Recent Outward</div><br>
+                {% for item in sales %}
+                    {% if not forloop.first %}
+                        <br><div style="border-bottom: 0.5px solid #4e6570 "></div><br>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-9">
+                            Bill No: #{{ item.billno }} <br>
+                            Saled by <b>{{ item.name }}</b> <br>
+                            <small><i>{{ item.time.date }}</i></small>
+                        </div>
+                        <div class="col-md-2"> <br> ₹{{ item.get_total_price }} <br> <a href="{% url 'sale-bill' item.billno %}">View Bill</a> </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
+
+
     </div>
 
     <!-- Loading Chart JS -->

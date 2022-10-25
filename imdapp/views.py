@@ -57,7 +57,7 @@ class SupplierListView(ListView):
 class SupplierCreateView(SuccessMessageMixin, CreateView):
     model = Supplier
     form_class = SupplierForm
-    success_url = '/suppliers/suppliers'
+    success_url = '/inventory/suppliers'
     success_message = "Supplier has been created successfully"
     template_name = "suppliers/edit_supplier.html"
 
@@ -73,7 +73,7 @@ class SupplierCreateView(SuccessMessageMixin, CreateView):
 class SupplierUpdateView(SuccessMessageMixin, UpdateView):
     model = Supplier
     form_class = SupplierForm
-    success_url = '/imdapp/suppliers'
+    success_url = '/inventory/suppliers'
     success_message = "Supplier details has been updated successfully"
     template_name = "suppliers/edit_supplier.html"
 
