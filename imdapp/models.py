@@ -60,10 +60,6 @@ class Supplier(models.Model):
         return str(self.name)
 
 class Stock(models.Model):
-    # STATUS_CHOICE=[
-    #     ('Consumable','Consumable'),
-    #     ('Non_Consumable','Non_Consumable')
-    # ]
     CONDITION = [
         ('GOOD', 'GOOD'),
         ('TORED', 'TORED'),
