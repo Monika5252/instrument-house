@@ -1,6 +1,7 @@
 from django.urls import path
 
-from . import views
+if __name__ == '__main__':
+    from imd.homepage import views
 
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home'),
