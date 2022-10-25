@@ -6,6 +6,9 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('', views.HomeView.as_view(), name='home'),
+    path('about/', views.AboutView.as_view(), name='about'),
+
     path('', views.StockListView.as_view(), name='inventory'),
     path('new', views.StockCreateView.as_view(), name='new-stock'),
     path('stock/<pk>/edit', views.StockUpdateView.as_view(), name='edit-stock'),

@@ -16,7 +16,7 @@ from django.views.generic import (
     ListView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView, TemplateView
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -546,6 +546,29 @@ class StockView(View):
 
 
 
+
+
+class HomeView(View):
+    template_name = "home.html"
+    def get(self, request):
+        labels = []
+        data = []
+        stockqueryset = Stock.objects.filter(is_deleted=False).order_by('-quantity')
+        for item in stockqueryset:
+            labels.append(item.name)
+            data.append(item.quantity)
+        sales = SaleBill.objects.order_by('-time')[:3]
+        purchases = PurchaseBill.objects.order_by('-time')[:3]
+        context = {
+            'labels'    : labels,
+            'data'      : data,
+            'sales'     : sales,
+            'purchases' : purchases
+        }
+        return render(request, self.template_name, context)
+
+class AboutView(TemplateView):
+    template_name = "about.html"
 
 
 
