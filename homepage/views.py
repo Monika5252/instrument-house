@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
 
-# from imd.imdapp.`models import Stock, SaleBill, PurchaseBill
-from imdapp.models import Stock,SaleBill,PurchaseBill
+from imd.imdapp.models import Stock, SaleBill, PurchaseBill
+# from imdapp.models import Stock,SaleBill,PurchaseBill
 
 class HomeView(View):
     template_name = "home.html"
