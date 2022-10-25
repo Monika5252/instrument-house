@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-9(qoxn594k57a^ie(rt225liumt$(7_r2^ej2fbj*q#zgybt0s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["imdapp.herokuapp.com","localhost","127.0.0.1"]
+ALLOWED_HOSTS = ['imdapp.herokuapp.com','localhost','127.0.0.1']
 
 
 # Application definition
