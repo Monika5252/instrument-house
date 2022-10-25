@@ -9,8 +9,8 @@ class HomeView(View):
     def get(self, request):        
         labels = []
         data = []
-        queryset = Stock.objects.filter(is_deleted=False).order_by('-quantity')
-        for item in queryset:
+        stockqueryset = Stock.objects.filter(is_deleted=False).order_by('-quantity')
+        for item in stockqueryset:
             labels.append(item.name)
             data.append(item.quantity)
         sales = SaleBill.objects.order_by('-time')[:3]
