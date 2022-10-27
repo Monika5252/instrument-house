@@ -29,19 +29,19 @@ SECRET_KEY = 'django-insecure-9(qoxn594k57a^ie(rt225liumt$(7_r2^ej2fbj*q#zgybt0s
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['imdapp.herokuapp.com','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1','imdapp.herokuapp.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'homepage.apps.HomepageConfig',
     'imdapp.apps.ImdappConfig',
     'widget_tweaks',                            # uses 'django-widget-tweaks' app
@@ -140,6 +140,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+WHITENOISE_USE_FINDERS = True
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
