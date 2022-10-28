@@ -555,14 +555,12 @@ def addcategory(request):
     context={
     'form': form
     }
-
     return render(request,"Master/addcategory.html",context)
 
 def categorylist(request):
-    product=Category.objects.all()
-
+    queryset=Category.objects.all()
     context = {
-        "queryset":product
+        "queryset":queryset
 
     }
     return render(request,"Master/category_list.html",context)
