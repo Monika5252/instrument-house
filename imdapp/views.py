@@ -553,23 +553,10 @@ def addcategory(request):
         form.save()
         return redirect('category-list')
     context={
-        'form': form
+    'form': form
     }
 
     return render(request,"Master/addcategory.html",context)
-
-# def categorylist(request):
-#     user_list = Category.objects.all()
-#     page = request.GET.get('page', 1)
-#
-#     paginator = Paginator(user_list, 10)
-#     try:
-#         queryset = paginator.page(page)
-#     except PageNotAnInteger:
-#         queryset = paginator.page(1)
-#     except EmptyPage:
-#         queryset = paginator.page(paginator.num_pages)
-#     return render(request, "Master/category_list.html", {'queryset': queryset})
 
 def categorylist(request):
     product=Category.objects.all()
