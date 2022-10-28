@@ -160,9 +160,19 @@ border-radius:25px;
 <!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'inventory' %}"><i class="fas fa-dot-circle"></i> Stock Summary</a> </li>-->
 
                     </ul>
-<!
 
-                <li>
+                </li>
+
+                 <li>
+                    <a href="#MasterSubmenu" data-toggle="collapse" class="dropdown-toggle sidebar-text right-arrow sidebar-button"><i class="fas fa-file"></i> Master</a>
+                    <ul class="collapse list-unstyled" id="MasterSubmenu">
+                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:30px; background-color:#01345B" href="{% url 'addcategory' %}"><i class="fas fa-dot-circle"></i> Add Category</a> </li>
+                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:px; background-color:#01345B" href="{% url 'category-list' %}"><i class="fas fa-dot-circle"></i> Category List</a> </li>
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:30px; background-color:#8DB48E" href="{% url 'purchases-list' %}"><i class="fas fa-dot-circle"></i> Inward Slip</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" style="font-size:px; background-color:#8DB48E" href="{% url 'sales-list' %}"><i class="fas fa-dot-circle"></i> Outward Slips</a> </li>-->
+<!--                        <li> <a class="sidebar-text sidebar-subitem sidebar-button" href="{% url 'inventory' %}"><i class="fas fa-dot-circle"></i> Stock Summary</a> </li>-->
+
+                    </ul>
                     <a class="sidebar-text sidebar-button" href="{% url 'about' %}"><i class="fas fa-info-circle"></i> Help Section</a>
                 </li>
 

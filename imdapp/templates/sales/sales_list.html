@@ -38,6 +38,7 @@
                 <th width="5%">Email</th>
                 <th width="5%">Category</th>
                 <th width="5%">Subcategory</th>
+                <th width="5%">Type</th>
                 <th width="5%">Quantity</th>
                 <th width="5%">Total</th>
                 <th width="5%">Issued To</th>
@@ -60,6 +61,7 @@
                 <td class="align-middle">{% for item in sale.get_items_list %} {{ sale.email }} <br> {% endfor %}</td>
                 <td class="align-middle">{% for item in sale.get_items_list %} {{ item.stock.category }} <br> {% endfor %}</td>
                 <td class="align-middle">{% for item in sale.get_items_list %} {{ item.stock.subcategory }} <br> {% endfor %}</td>
+                <td class="align-middle">{% for item in sale.get_items_list %} {{ item.stock.type }} <br> {% endfor %}</td>
                 <td class="align-middle">{% for item in sale.get_items_list %} {{ item.quantity }} <br> {% endfor %}</td>
                 <td class="align-middle">₹{{ sale.get_total_price }}</td>
                 <td class="align-middle">{% for item in sale.get_items_list %} {{ sale.issued_to }} <br> {% endfor %}</td>
@@ -73,6 +75,10 @@
         </tbody>
 
     </table>
+ <div>
+        <a href="{% url 'stockre' %}" class="btn btn-success">Export CSV</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Back To Home</a>
+    </div>
 
     <div class="align-middle"><!-- Log on to codeastro.com for more projects -->
         {% if is_paginated %}

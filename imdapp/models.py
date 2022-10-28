@@ -7,9 +7,9 @@ from django.db import models
 class Category(models.Model):
     id=models.IntegerField(primary_key=True)
     category=models.CharField(max_length=255)
-    # subcategory=models.CharField(max_length=255)
-    # description=models.TextField(max_length=255)
-    # is_deleted=models.BooleanField(default=False)
+    subcategory=models.CharField(max_length=255)
+    description=models.TextField(max_length=255)
+    is_deleted=models.BooleanField(default=False)
     def __str__(self):
         return self.category
 
@@ -60,6 +60,11 @@ class Supplier(models.Model):
         return str(self.name)
 
 class Stock(models.Model):
+    STATUS_CHOICE = [
+        ('CONSUMABLE', 'CONSUMABLE'),
+        ('NON-COMSUMABLE', 'NON-COMSUMABLE'),
+        ]
+
     CONDITION = [
         ('GOOD', 'GOOD'),
         ('TORED', 'TORED'),
@@ -75,7 +80,7 @@ class Stock(models.Model):
     subcategory=models.ForeignKey(Subcategory,on_delete=models.CASCADE)
     description=models.ForeignKey(Description,on_delete=models.CASCADE)
     name=models.ForeignKey(Supp,on_delete=models.CASCADE)
-    type=models.CharField(max_length=20)
+    type=models.CharField(max_length=50, choices=STATUS_CHOICE)
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
     Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by

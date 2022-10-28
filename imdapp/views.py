@@ -5,6 +5,8 @@ import read as read
 from django.db.models import Q
 from django.http import HttpResponse
 
+
+
 import csv
 
 from django.shortcuts import render, redirect, get_object_or_404
@@ -30,7 +32,7 @@ from .models import (
     PurchaseBillDetails,
     SaleBill,
     SaleItem,
-    SaleBillDetails, Stock, Category,
+    SaleBillDetails, Stock, Category, Subcategory,
 )
 from .forms import (
     StockForm,
@@ -40,8 +42,7 @@ from .forms import (
     SupplierForm,
     SaleForm,
     SaleItemFormset,
-    SaleDetailsForm,
-
+    SaleDetailsForm, CategoryForm,
 
 )
 
@@ -525,30 +526,88 @@ class StockView(View):
         return render(request, 'inventory/stockdetails.html', context)
 
 
-# class CategoryListView(FilterView):
-#     template_name = 'Master/category-list.html'
-#     queryset = Category.objects.all()
+# class CategoryListView(ListView):
+#     model = Category
+#     template_name = 'Master/category_list.html'
+#     queryset = Category.objects.filter(is_deleted=False)
 #     paginate_by = 10
+#     paginator = Paginator(keywords, per_page=2)
 #
 #
 # class CategoryCreateView(SuccessMessageMixin, CreateView):
 #     model = Category
 #     form_class = CategoryForm
-#     template_name = "Master/addcategory.html"
-#     success_url = '/category-list'
+#     success_url = '/inventory/Master'
 #     success_message = "Category has been created successfully"
+#     template_name = "Master/addcategory.html"
 #
 #     def get_context_data(self, **kwargs):  # used to send additional context
 #         context = super().get_context_data(**kwargs)
 #         context["title"] = 'New Category'
 #         context["savebtn"] = 'Add Category'
+#         return context
+
+def addcategory(request):
+    form=CategoryForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('category-list')
+    context={
+        'form': form
+    }
+
+    return render(request,"Master/addcategory.html",context)
+
+# def categorylist(request):
+#     user_list = Category.objects.all()
+#     page = request.GET.get('page', 1)
+#
+#     paginator = Paginator(user_list, 10)
+#     try:
+#         queryset = paginator.page(page)
+#     except PageNotAnInteger:
+#         queryset = paginator.page(1)
+#     except EmptyPage:
+#         queryset = paginator.page(paginator.num_pages)
+#     return render(request, "Master/category_list.html", {'queryset': queryset})
+
+def categorylist(request):
+    product=Category.objects.all()
+
+    context = {
+        "queryset":product
+
+    }
+    return render(request,"Master/category_list.html",context)
+
+
+def delete_category(request ,id):
+    print(id)
+    Category.objects.get(id = id).delete()
+    return redirect('category-list')
+#
+# def update_category(request, pk):
+#     category = Category.objects.get(pk = pk)
+#     category.category = category
+#     category.save()
+#     #return render(request, 'index.html')
+#     return redirect('category-list')
 
 
 
+class CategoryUpdateView(SuccessMessageMixin, UpdateView):
+    model = Category
+    form_class = CategoryForm
+    success_url = '/inventory/Master'
+    success_message = "Category details has been updated successfully"
+    template_name = "Master/update_category.html"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'Edit Supplier'
+        context["savebtn"] = 'Save Changes'
 
-
-
+        return context
 
 
 

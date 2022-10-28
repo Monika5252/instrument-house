@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import formset_factory
+
 from .models import (
     Supplier,
     PurchaseBill,
@@ -7,7 +8,7 @@ from .models import (
     PurchaseBillDetails,
     SaleBill,
     SaleItem,
-    SaleBillDetails, Stock
+    SaleBillDetails, Stock,Category
 )
 class StockForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):                                                        # used to set css classes to the various fields
@@ -21,10 +22,6 @@ class StockForm(forms.ModelForm):
         self.fields['Mode_of_delivery'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['condition'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['label_code'].widget.attrs.update({'class': 'textinput form-control'})
-
-
-
-
 
 
     class Meta:
@@ -134,24 +131,23 @@ class SaleDetailsForm(forms.ModelForm):
 
 
 
-#
-# class CategoryForm(forms.ModelForm):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['category'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
-#         self.fields['subcategory'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
-#         self.fields['description'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
-#
-#
-#
-#     class Meta:
-#         model = Category
-#         fields = ['category','subcategory','description']
-#         widgets = {
-#             'description' : forms.Textarea(
-#                 attrs = {
-#                     'class' : 'textinput form-control',
-#                     'rows'  : '2'
-#                 }
-#             )
-#         }
+class CategoryForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['category'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
+        self.fields['subcategory'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
+        self.fields['description'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
+
+
+
+    class Meta:
+        model = Category
+        fields = ['category','subcategory','description']
+        widgets = {
+            'description' : forms.Textarea(
+                attrs = {
+                    'class' : 'textinput form-control',
+                    'rows'  : '2'
+                }
+            )
+        }
