@@ -65,22 +65,22 @@ class Stock(models.Model):
         ('CONSUMABLE', 'CONSUMABLE'),
         ('NON-COMSUMABLE', 'NON-COMSUMABLE'),
     ]
-    # STATUS_UNIT = [
-    #     ('Mtr', 'Mtr'),
-    #     ('Cm', 'Cm'),
-    #     ('mm', 'mm'),
-    #     ('Kg', 'Kg'),
-    #     ('gm', 'gm'),
-    #     ('Ltr', 'Ltr'),
-    #     ('SqMtr', 'SqMtr'),
-    #     ('SqCm', 'SqCm'),
-    #     ('CuM', 'CuM'),
-    #     ('Ream', 'Ream'),
-    #     ('Doz', 'Doz'),
-    #     ('Pkts', 'Pkts'),
-    #     ('Pairs', 'Pairs'),
-    #     ('Rolls', 'Rolls'),
-    #     ]
+    STATUS_UNIT = [
+        ('Mtr', 'Mtr'),
+        ('Cm', 'Cm'),
+        ('mm', 'mm'),
+        ('Kg', 'Kg'),
+        ('gm', 'gm'),
+        ('Ltr', 'Ltr'),
+        ('SqMtr', 'SqMtr'),
+        ('SqCm', 'SqCm'),
+        ('CuM', 'CuM'),
+        ('Ream', 'Ream'),
+        ('Doz', 'Doz'),
+        ('Pkts', 'Pkts'),
+        ('Pairs', 'Pairs'),
+        ('Rolls', 'Rolls'),
+        ]
 
     CONDITION = [
         ('GOOD', 'GOOD'),
@@ -100,7 +100,7 @@ class Stock(models.Model):
     type=models.CharField(max_length=50, choices=STATUS_CHOICE)
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
-    # unit=models.CharField(max_length=50, choices=STATUS_UNIT)
+    unit=models.CharField(max_length=50, choices=STATUS_UNIT)
     Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by
     label_code = models.CharField(max_length=20, default="")
     condition = models.CharField(max_length=50, choices=CONDITION)

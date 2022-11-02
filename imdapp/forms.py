@@ -19,7 +19,7 @@ class StockForm(forms.ModelForm):
         self.fields['type'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['description'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['quantity'].widget.attrs.update({'class': 'textinput form-control', 'min': '0'})
-        # self.fields['unit'].widget.attrs.update({'class': 'textinput form-control', 'min': '0'})
+        self.fields['unit'].widget.attrs.update({'class': 'textinput form-control', 'min': '0'})
         self.fields['Mode_of_delivery'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['condition'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['label_code'].widget.attrs.update({'class': 'textinput form-control'})
@@ -27,7 +27,7 @@ class StockForm(forms.ModelForm):
 
     class Meta:
         model = Stock
-        fields = ['name','category','subcategory','type','description','quantity','Mode_of_delivery','condition','label_code']
+        fields = ['name','category','subcategory','type','description','quantity','unit','Mode_of_delivery','condition','label_code']
 
 
 # form used to select a supplier
