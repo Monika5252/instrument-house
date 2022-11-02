@@ -99,6 +99,7 @@ class Migration(migrations.Migration):
                 ('type', models.CharField(choices=[('CONSUMABLE', 'CONSUMABLE'), ('NON-COMSUMABLE', 'NON-COMSUMABLE')], max_length=50)),
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('quantity', models.IntegerField(default=1)),
+                ('unit', models.CharField(choices=[('Mtr', 'Mtr'), ('Cm', 'Cm'), ('mm', 'mm'), ('Kg', 'Kg'), ('gm', 'gm'), ('Ltr', 'Ltr'), ('SqMtr', 'SqMtr'), ('SqCm', 'SqCm'), ('CuM', 'CuM'), ('Ream', 'Ream'), ('Doz', 'Doz'), ('Pkts', 'Pkts'), ('Pairs', 'Pairs'), ('Rolls', 'Rolls')], max_length=50)),
                 ('Mode_of_delivery', models.CharField(choices=[('BYHAND', 'BYHAND'), ('COURIOR', 'COURIOR'), ('OTHER', 'OTHER')], max_length=50)),
                 ('label_code', models.CharField(default='', max_length=20)),
                 ('condition', models.CharField(choices=[('GOOD', 'GOOD'), ('TORED', 'TORED'), ('DAMAGED', 'DAMAGED')], max_length=50)),
