@@ -40,6 +40,7 @@ class Supp(models.Model):
     id=models.IntegerField(primary_key=True)
     name=models.CharField(max_length=255)
 
+
     def __str__(self):
         return self.name
     class Meta:
@@ -53,7 +54,7 @@ class Supplier(models.Model):
     name = models.ForeignKey(Supp,on_delete=models.CharField)
     phone = models.CharField(max_length=12, unique=True)
     address = models.TextField()
-    email = models.EmailField(max_length=254, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
     is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
@@ -63,6 +64,22 @@ class Stock(models.Model):
     STATUS_CHOICE = [
         ('CONSUMABLE', 'CONSUMABLE'),
         ('NON-COMSUMABLE', 'NON-COMSUMABLE'),
+    ]
+    STATUS_UNIT = [
+        ('Mtr', 'Mtr'),
+        ('Cm', 'Cm'),
+        ('mm', 'mm'),
+        ('Kg', 'Kg'),
+        ('gm', 'gm'),
+        ('Ltr', 'Ltr'),
+        ('SqMtr', 'SqMtr'),
+        ('SqCm', 'SqCm'),
+        ('CuM', 'CuM'),
+        ('Ream', 'Ream'),
+        ('Doz', 'Doz'),
+        ('Pkts', 'Pkts'),
+        ('Pairs', 'Pairs'),
+        ('Rolls', 'Rolls'),
         ]
 
     CONDITION = [
@@ -83,6 +100,7 @@ class Stock(models.Model):
     type=models.CharField(max_length=50, choices=STATUS_CHOICE)
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
+    unit=models.CharField(max_length=50, choices=STATUS_UNIT)
     Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by
     label_code = models.CharField(max_length=20, default="")
     condition = models.CharField(max_length=50, choices=CONDITION)

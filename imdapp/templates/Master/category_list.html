@@ -33,7 +33,7 @@
 
         <thead class="thead-dark align-middle">
             <tr>
-                <th width="20%">No</th>
+<!--                <th width="20%">No</th>-->
                 <th width="20%">Category</th>
                 <th width="20%">Sub-Category</th>
                 <th width="20">Description</th>
@@ -45,7 +45,7 @@
         <tbody>
             {% for category in queryset %}
             <tr>
-                <td class="align-middle"> {{ forloop.counter}} </td>
+<!--                <td class="align-middle"> {{ forloop.counter}} </td>-->
                 <td class="align-middle"> {{ category.category }} </td>
                 <td class="align-middle"> {{ category.subcategory }} </td>
                 <td class="align-middle"> {{ category.description }} </td>
@@ -57,34 +57,35 @@
 
             </tr>
                 {% endfor %}
+
         </tbody>
     </table>
       </div>
-
-
-    <div class="align-middle"><!-- Log on to codeastro.com for more projects -->
-        {% if is_paginated %}
-
-            {% if page_obj.has_previous %}
+<div class="pagination">
+    <span class="step-links">
+        {% if queryset.has_previous %}
                 <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ queryset.previous_page_number }}">Previous</a>
             {% endif %}
-
-            {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
+        {% for num in queryset.paginator.page_range %}
+                {% if queryset.number == num %}
                     <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                {% elif num > queryset.number|add:'-3' and num < queryset.number|add:'3' %}
                     <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
                 {% endif %}
             {% endfor %}
 
-            {% if page_obj.has_next %}
-                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-                <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-            {% endif %}
+<!--        <span class="current">-->
+<!--            Page {{ queryset.number}} of {{ queryset.paginator.num_pages }}.-->
+<!--        </span>-->
 
-        {% endif %}
-    </div>
+        {% if queryset.has_next %}
+                <a class="btn btn-outline-info mb-4" href="?page={{ queryset.next_page_number }}">Next</a>
+                <a class="btn btn-outline-info mb-4" href="?page={{ queryset.paginator.num_pages }}">Last</a>
+            {% endif %}
+    </span>
+</div>
+
 
 {% else %}
 

@@ -42,9 +42,31 @@ from .forms import (
     SupplierForm,
     SaleForm,
     SaleItemFormset,
-    SaleDetailsForm, CategoryForm,
+    SaleDetailsForm, CategoryForm, SubcategoryForm, DescriptionForm,
 
 )
+#
+# def addsupplier(request):
+#     form=SupplierForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('suppliers-list')
+#     context={
+#     'form': form
+#     }
+#     return render(request,"suppliers/edit_supplier.html",context)
+#
+#
+# def supplierlist(request):
+#     queryset=Category.objects.all()
+#     paginator=Paginator(queryset,10)
+#     page_number=request.GET.get('page')
+#     queryset=paginator.get_page(page_number)
+#     context = {
+#         "queryset":queryset
+#
+#     }
+#     return render(request,"/inventory/suppliers",context)
 
 
 class SupplierListView(ListView):
@@ -526,57 +548,75 @@ class StockView(View):
         return render(request, 'inventory/stockdetails.html', context)
 
 
-# class CategoryListView(ListView):
-#     model = Category
-#     template_name = 'Master/category_list.html'
-#     queryset = Category.objects.filter(is_deleted=False)
-#     paginate_by = 10
-#     paginator = Paginator(keywords, per_page=2)
-#
-#
-# class CategoryCreateView(SuccessMessageMixin, CreateView):
-#     model = Category
-#     form_class = CategoryForm
-#     success_url = '/inventory/Master'
-#     success_message = "Category has been created successfully"
-#     template_name = "Master/addcategory.html"
-#
-#     def get_context_data(self, **kwargs):  # used to send additional context
-#         context = super().get_context_data(**kwargs)
-#         context["title"] = 'New Category'
-#         context["savebtn"] = 'Add Category'
-#         return context
+
 
 def addcategory(request):
     form=CategoryForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('category-list')
-    context={
-    'form': form
-    }
-    return render(request,"Master/addcategory.html",context)
+    try:
+        error = "no"
+        if form.is_valid():
+            form.save()
+            # return redirect('inventory')
+        else:
+            error = "yes"
+    except:
+        error = "yes"
+    return render(request, "Master/addcat.html", locals())
 
-def categorylist(request):
-    queryset=Category.objects.all()
-    context = {
-        "queryset":queryset
+def addsubcategory(request):
+    form=SubcategoryForm(request.POST or None)
+    try:
+        error = "no"
+        if form.is_valid():
+            form.save()
+            # return redirect('inventory')
+        else:
+            error = "yes"
+    except:
+        error = "yes"
+    return render(request,"Master/addsubcategory.html",locals())
 
-    }
-    return render(request,"Master/category_list.html",context)
+
+def adddescription(request):
+    form=DescriptionForm(request.POST or None)
+    try:
+        error = "no"
+        if form.is_valid():
+            form.save()
+            # return redirect('inventory')
+        else:
+            error = "yes"
+    except:
+        error = "yes"
+    return render(request, "Master/adddescription.html", locals())
+#
+# def add(request):
+#     form=CategoryForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         return redirect('category-list')
+#     context={
+#     'form': form
+#     }
+#     return render(request,"Master/addcategory.html",context)
+
+
+# def categorylist(request):
+#     queryset=Category.objects.all()
+#     paginator=Paginator(queryset,10)
+#     page_number=request.GET.get('page')
+#     queryset=paginator.get_page(page_number)
+#     context = {
+#         "queryset":queryset
+#
+#     }
+#     return render(request,"Master/category_list.html",context)
 
 
 def delete_category(request ,id):
     print(id)
     Category.objects.get(id = id).delete()
     return redirect('category-list')
-#
-# def update_category(request, pk):
-#     category = Category.objects.get(pk = pk)
-#     category.category = category
-#     category.save()
-#     #return render(request, 'index.html')
-#     return redirect('category-list')
 
 
 
@@ -607,8 +647,34 @@ class CategoryUpdateView(SuccessMessageMixin, UpdateView):
 
 
 
+#
+# def update_category(request, pk):
+#     category = Category.objects.get(pk = pk)
+#     category.category = category
+#     category.save()
+#     #return render(request, 'index.html')
+#     return redirect('category-list')
 
-
+# class CategoryListView(ListView):
+#     model = Category
+#     template_name = 'Master/category_list.html'
+#     queryset = Category.objects.filter(is_deleted=False)
+#     paginate_by = 10
+#     paginator = Paginator(keywords, per_page=2)
+#
+#
+# class CategoryCreateView(SuccessMessageMixin, CreateView):
+#     model = Category
+#     form_class = CategoryForm
+#     success_url = '/inventory/Master'
+#     success_message = "Category has been created successfully"
+#     template_name = "Master/addcategory.html"
+#
+#     def get_context_data(self, **kwargs):  # used to send additional context
+#         context = super().get_context_data(**kwargs)
+#         context["title"] = 'New Category'
+#         context["savebtn"] = 'Add Category'
+#         return context
 
 
 

@@ -1,8 +1,8 @@
 .sidebar-text,
 .sidebar-text:hover,
 .sidebar-text:focus {
-  color:#0F2557;
-  font-size:25px;
+  color:white;
+  font-size:1.3rem;
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -100,14 +100,20 @@ a.nav-button {
   max-width: 250px;
 }
 
-
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
 
 #content {
   width: 100%;
-  padding: 20px;
+  padding: 15px;
   min-height: 100vh;
   transition: all 0.3s;
 }
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
 
 @media (max-width: 768px) {
   #sidebar {

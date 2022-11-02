@@ -41,8 +41,10 @@ urlpatterns = [
     path("purchases/<billno>", views.PurchaseBillView.as_view(), name="purchase-bill"),
     path("sales/<billno>", views.SaleBillView.as_view(), name="sale-bill"),
 
-    path('Master/', views.categorylist, name='category-list'),
+    # path('Master/', views.categorylist, name='category-list'),
     path('Master/new',views.addcategory, name='addcategory'),
+    path('Master/subcategory',views.addsubcategory, name='addsubcategory'),
+    path('Master/description',views.adddescription, name='adddescription'),
 
 
 
