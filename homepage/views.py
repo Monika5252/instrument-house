@@ -6,10 +6,6 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import authenticate, login as loginuser,logout
 
 from imdapp.models import *
-
-from imd.imdapp.models import Stock, SaleBill, PurchaseBill
-
-
 class HomeView(View):
     template_name = "home.html"
     def get(self, request):
