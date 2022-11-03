@@ -100,7 +100,6 @@ class Stock(models.Model):
     type=models.CharField(max_length=50, choices=STATUS_CHOICE)
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
-    unit=models.CharField(max_length=50, choices=STATUS_UNIT)
     Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by
     label_code = models.CharField(max_length=20, default="")
     condition = models.CharField(max_length=50, choices=CONDITION)
