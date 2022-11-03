@@ -157,7 +157,7 @@ class PurchaseView(ListView):
 # used to select the supplier
 class SelectSupplierView(View):
     form_class = SelectSupplierForm
-    template_name = 'purchases/select_supplier.html'
+    template_name = 'purchases/supplier_list.html'
 
     def get(self, request, *args, **kwargs):  # loads the form page
         form = self.form_class
