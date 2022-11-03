@@ -11,7 +11,7 @@ class HomeView(View):
     def get(self, request):
         labels = []
         data = []
-        stockqueryset = Stock.objects.filter(is_deleted=False).order_by('-name')
+        stockqueryset = Stock.objects.filter(is_deleted=False).order_by('-quantity')
         for item in stockqueryset:
             labels.append(item.name)
             data.append(item.quantity)
