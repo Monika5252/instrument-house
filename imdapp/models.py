@@ -88,8 +88,8 @@ class Stock(models.Model):
         ('DAMAGED', 'DAMAGED'),
     ]
     MODE_OF_DELEVERY = [
-        ('BYHAND', 'BYHAND'),
-        ('COURIOR', 'COURIOR'),
+        ('BY-HAND', 'BY-HAND'),
+        ('COURIER', 'COURIER'),
         ('OTHER', 'OTHER'),
 
     ]
