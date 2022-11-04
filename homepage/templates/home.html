@@ -58,7 +58,7 @@
                       <div class="row" style="font-family: 'Alkalami'">
                         <div class="col-md-9">
                             Bill No: #{{ item.billno }} <br>
-                            Saled by <b>{{ item.name }}</b> <br>
+                            Sold by <b>{{ item.name }}</b> <br>
                             <small><i>{{ item.time.date }}</i></small>
                         </div>
                         <div class="col-md-2"> <br> ₹{{ item.get_total_price }} <br> <a href="{% url 'sale-bill' item.billno %}">View Bill</a> </div>

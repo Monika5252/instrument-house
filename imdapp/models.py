@@ -84,10 +84,10 @@ class Stock(models.Model):
 
     CONDITION = [
         ('GOOD', 'GOOD'),
-        ('TORED', 'TORED'),
+        ('TORN', 'TORN'),
         ('DAMAGED', 'DAMAGED'),
     ]
-    MODE_OF_DELEVERY = [
+    MODE_OF_DELIVERY = [
         ('BY-HAND', 'BY-HAND'),
         ('COURIER', 'COURIER'),
         ('OTHER', 'OTHER'),
@@ -101,7 +101,7 @@ class Stock(models.Model):
     unit=models.CharField(max_length=50,choices=STATUS_UNIT)
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(default=1)
-    Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by
+    Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELIVERY)  # received by
     label_code = models.CharField(max_length=20, default="")
     condition = models.CharField(max_length=50, choices=CONDITION)
     is_deleted = models.BooleanField(default=False)
@@ -161,12 +161,12 @@ class SaleBill(models.Model):
 
     CONDITION = [
         ('GOOD', 'GOOD'),
-        ('TORED', 'TORED'),
+        ('TORN', 'TORN'),
         ('DAMAGED', 'DAMAGED'),
     ]
-    MODE_OF_DELEVERY = [
-        ('BYHAND', 'BYHAND'),
-        ('COURIOR', 'COURIOR'),
+    MODE_OF_DELIVERY = [
+        ('BY-HAND', 'BY-HAND'),
+        ('COURIER', 'COURIER'),
         ('OTHER', 'OTHER'),
 
     ]
@@ -181,7 +181,7 @@ class SaleBill(models.Model):
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
     description = models.ForeignKey(Description, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
-    Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELEVERY)  # received by
+    Mode_of_delivery = models.CharField(max_length=50, choices=MODE_OF_DELIVERY)  # received by
     label_code = models.CharField(max_length=20, default="")
     issued_to = models.CharField(max_length=50)
     # condition = models.CharField(max_length=50, choices=CONDITION)
