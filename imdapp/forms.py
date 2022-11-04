@@ -95,6 +95,7 @@ class SaleForm(forms.ModelForm):
         self.fields['address'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
         self.fields['issued_to'].widget.attrs.update({'class': 'textinput form-control', 'pattern' : '[a-zA-Z\s]{1,50}', 'title' : 'Alphabets and Spaces only', 'required': 'true'})
         self.fields['category'].widget.attrs.update({'class': 'textinput form-control'})
+        self.fields['type'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['description'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['subcategory'].widget.attrs.update({'class': 'textinput form-control'})
         self.fields['quantity'].widget.attrs.update({'class': 'textinput form-control', 'min': '0'})
@@ -105,7 +106,7 @@ class SaleForm(forms.ModelForm):
 
     class Meta:
         model = SaleBill
-        fields = ['name', 'phone', 'email','address','issued_to','category','subcategory','quantity','Mode_of_delivery','label_code','description']
+        fields = ['name', 'phone', 'email','address','issued_to','category','type','subcategory','quantity','Mode_of_delivery','label_code','description']
 
 #
 class SaleItemForm(forms.ModelForm):

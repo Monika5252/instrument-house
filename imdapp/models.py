@@ -158,6 +158,10 @@ class PurchaseItem(models.Model):
 
 
 class SaleBill(models.Model):
+    STATUS_CHOICE = [
+        ('CONSUMABLE', 'CONSUMABLE'),
+        ('NON-COMSUMABLE', 'NON-COMSUMABLE'),
+    ]
 
     CONDITION = [
         ('GOOD', 'GOOD'),
@@ -176,6 +180,7 @@ class SaleBill(models.Model):
     name = models.CharField(max_length=150)
     phone = models.CharField(max_length=12)
     address = models.CharField(max_length=200)
+    type = models.CharField(max_length=50, choices=STATUS_CHOICE)  # received by
     email = models.EmailField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
